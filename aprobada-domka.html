@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oficialmente Aprobada · DOMKA SOLUTIONS</title>
+  <meta name="description" content="Aprobada para el rol más importante dentro de DOMKA SOLUTIONS.">
+  <meta property="og:title" content="Aprobada · DOMKA SOLUTIONS">
+  <meta property="og:description" content="Felicitaciones, has sido oficialmente aprobada.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💚</text></svg>">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <style>
+    /* ────────────────────────────────
+       APROBADA-DOMKA — estilos locales
+    ──────────────────────────────── */
+
+    /* ─ Fondo animado hero ─ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 48px 24px;
+      background: linear-gradient(155deg,
+        #0e4f34 0%,
+        #1b7a51 30%,
+        #124f35 60%,
+        #0a3325 100%);
+      overflow: hidden;
+    }
+
+    /* Efecto luces de fondo */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 30%, rgba(201,169,110,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(255,255,255,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Logo marca */
+    .hero-brand {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 48px;
+      position: relative;
+      z-index: 2;
+      animation: fadeDown 1s ease both;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 9vw, 7rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 1s 0.2s ease both;
+    }
+    .hero-title span {
+      display: block;
+      font-style: italic;
+      font-size: 0.5em;
+      font-weight: 400;
+      color: var(--gold-light);
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-italic);
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: rgba(255,255,255,0.82);
+      max-width: 680px;
+      line-height: 1.75;
+      margin: 0 auto 48px;
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 1s 0.4s ease both;
+    }
+
+    .hero .btn-primary {
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 1s 0.6s ease both;
+      background: transparent;
+      border: 2px solid var(--gold);
+      color: var(--gold);
+    }
+    .hero .btn-primary::before { background: var(--gold); }
+    .hero .btn-primary:hover { color: var(--black); }
+
+    /* Scroll indicator */
+    .scroll-hint {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: fadeUp 1s 1s ease both;
+    }
+    .scroll-hint::after {
+      content: '';
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%,100% { opacity: 0.4; transform: scaleY(1); }
+      50%      { opacity: 1;   transform: scaleY(1.3); }
+    }
+
+    /* ─ Tarjeta principal ─ */
+    .main-card-section {
+      background: var(--cream);
+      padding: 120px 24px;
+      position: relative;
+    }
+    .main-card-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 120px;
+      background: linear-gradient(to bottom, #0a3325, var(--cream));
+    }
+
+    .main-card {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 56px 48px;
+      position: relative;
+    }
+
+    /* Sello estampado */
+    .badge-approved {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      color: var(--white);
+      padding: 10px 28px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 36px;
+      box-shadow: 0 8px 30px rgba(27,122,81,0.35);
+      animation: pulse 3s ease infinite;
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 8px 30px rgba(27,122,81,0.35); }
+      50%      { box-shadow: 0 8px 50px rgba(27,122,81,0.6); }
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .card-title em { color: var(--green); }
+
+    .card-meta {
+      font-family: var(--font-italic);
+      font-size: 1.1rem;
+      color: #666;
+      margin-bottom: 40px;
+    }
+
+    /* Campos tipo documento */
+    .card-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 36px;
+    }
+    .card-field {
+      background: rgba(27,122,81,0.05);
+      border-left: 3px solid var(--green);
+      padding: 16px 20px;
+      border-radius: 0 12px 12px 0;
+    }
+    .card-field-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 6px;
+    }
+    .card-field-value {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--black);
+      line-height: 1.4;
+    }
+
+    /* ─ Foto ─ */
+    .photo-section {
+      padding: 80px 24px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--cream) 0%, #e8f3ee 50%, var(--cream) 100%);
+    }
+    .photo-frame {
+      display: inline-block;
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 1px rgba(27,122,81,0.2),
+        0 0 40px rgba(27,122,81,0.25),
+        0 0 80px rgba(27,122,81,0.12);
+      animation: float 6s ease-in-out infinite;
+      max-width: 480px;
+      width: 100%;
+    }
+    .photo-frame img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      display: block;
+    }
+    .photo-placeholder {
+      width: 100%;
+      height: 520px;
+      background: linear-gradient(135deg, #e8f3ee, #d0e8dc);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      color: var(--green);
+    }
+    .photo-placeholder svg { opacity: 0.4; }
+    .photo-placeholder p { font-size: 0.85rem; color: #999; letter-spacing: 1px; }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-14px); }
+    }
+    .photo-caption {
+      margin-top: 24px;
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #666;
+    }
+
+    /* ─ Beneficios ─ */
+    .benefits-section {
+      padding: 100px 24px;
+      background: var(--black);
+    }
+    .benefits-section .section-title { color: var(--white); }
+    .benefits-section .section-subtitle { color: rgba(255,255,255,0.6); }
+    .benefits-section .section-label { color: var(--gold); }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .benefit-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 36px 24px;
+      text-align: center;
+      transition: var(--transition);
+      cursor: default;
+    }
+    .benefit-card:hover {
+      background: rgba(27,122,81,0.15);
+      border-color: rgba(27,122,81,0.4);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(27,122,81,0.2);
+    }
+    .benefit-icon {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .benefit-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .benefit-desc {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+
+    /* ─ Timeline ─ */
+    .timeline-section {
+      padding: 100px 24px;
+      background: var(--cream);
+    }
+    .timeline {
+      max-width: 700px;
+      margin: 64px auto 0;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--green), transparent);
+      transform: translateX(-50%);
+    }
+    .tl-item {
+      display: grid;
+      grid-template-columns: 1fr 40px 1fr;
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 56px;
+    }
+    .tl-item:nth-child(odd) .tl-content { text-align: right; grid-column: 1; }
+    .tl-item:nth-child(odd) .tl-dot    { grid-column: 2; }
+    .tl-item:nth-child(odd) .tl-empty  { grid-column: 3; }
+    .tl-item:nth-child(even) .tl-empty   { grid-column: 1; }
+    .tl-item:nth-child(even) .tl-dot     { grid-column: 2; }
+    .tl-item:nth-child(even) .tl-content { grid-column: 3; text-align: left; }
+
+    .tl-dot {
+      width: 40px; height: 40px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: 0 0 0 6px rgba(27,122,81,0.15);
+      justify-self: center;
+      flex-shrink: 0;
+    }
+    .tl-date {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .tl-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 6px;
+    }
+    .tl-desc {
+      font-family: var(--font-italic);
+      font-size: 0.9rem;
+      color: #777;
+      line-height: 1.5;
+    }
+
+    /* ─ Mensaje final ─ */
+    .message-section {
+      padding: 120px 24px;
+      background: linear-gradient(135deg, #0e4f34, #1b7a51, #0a3325);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .message-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,169,110,0.12) 0%, transparent 70%);
+    }
+    .message-box {
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    .message-quote {
+      font-size: 3rem;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 24px;
+      font-family: Georgia, serif;
+    }
+    .message-text {
+      font-family: var(--font-italic);
+      font-size: clamp(1.15rem, 3vw, 1.7rem);
+      color: rgba(255,255,255,0.92);
+      line-height: 1.8;
+      margin-bottom: 36px;
+    }
+    .message-sign {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--gold);
+    }
+
+    /* ─ Footer ─ */
+    footer {
+      background: var(--black);
+      padding: 48px 24px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 6px;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .footer-tagline {
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ─ Keyframes ─ */
+    @keyframes fadeUp   { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+
+    /* ─ Responsive ─ */
+    @media (max-width: 640px) {
+      .card-fields { grid-template-columns: 1fr; }
+      .main-card   { padding: 36px 24px; }
+      .timeline::before { left: 20px; }
+      .tl-item { grid-template-columns: 40px 1fr; }
+      .tl-item:nth-child(odd) .tl-content,
+      .tl-item:nth-child(even) .tl-content { grid-column: 2; text-align: left; }
+      .tl-item:nth-child(odd) .tl-dot,
+      .tl-item:nth-child(even) .tl-dot { grid-column: 1; }
+      .tl-empty { display: none; }
+      .tl-item { grid-template-columns: 40px 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Canvas partículas ── -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- ══════════════════════════════════════
+       HERO
+  ══════════════════════════════════════ -->
+  <section class="hero" id="inicio">
+
+    <p class="hero-brand">DOMKA SOLUTIONS &nbsp;·&nbsp; Certificación Oficial</p>
+
+    <h1 class="hero-title">
+      <span>Oficialmente</span>
+      Aprobada ❤️
+    </h1>
+
+    <p class="hero-subtitle">
+      Después de un exhaustivo proceso de evaluación en las más altas esferas de
+      DOMKA SOLUTIONS, has sido seleccionada para el rol más importante
+      que jamás hemos ofrecido.
+    </p>
+
+    <a href="#resultado" class="btn-primary">
+      <span>Ver Resultado Final</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </a>
+
+    <div class="scroll-hint">Descubrir</div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       TARJETA PRINCIPAL
+  ══════════════════════════════════════ -->
+  <section class="main-card-section" id="resultado">
+    <div class="container">
+      <div class="main-card glass-card reveal">
+
+        <!-- Badge -->
+        <div class="text-center" style="margin-bottom: 8px;">
+          <span class="badge-approved">✅ &nbsp; Aprobada Oficialmente</span>
+        </div>
+
+        <!-- Título -->
+        <h2 class="card-title text-center">
+          <em>Dueña de mi corazón</em><br>y socia oficial de mi vida
+        </h2>
+        <p class="card-meta text-center">Certificado de Incorporación Definitiva · DOMKA SOLUTIONS</p>
+
+        <!-- Ornamento -->
+        <div class="ornament">✦</div>
+
+        <!-- Campos -->
+        <div class="card-fields">
+          <div class="card-field">
+            <div class="card-field-label">Cargo</div>
+            <div class="card-field-value">Dueña de mi corazón y socia oficial de mi vida</div>
+          </div>
+          <div class="card-field">
+            <div class="card-field-label">Nivel de acceso</div>
+            <div class="card-field-value">Ilimitado · Abrazos, besos y amor eterno</div>
+          </div>
+          <div class="card-field">
+            <div class="card-field-label">Estado</div>
+            <div class="card-field-value" style="color: var(--green);">✅ Activa y confirmada</div>
+          </div>
+          <div class="card-field">
+            <div class="card-field-label">Fecha de certificación</div>
+            <div class="card-field-value js-date">—</div>
+          </div>
+          <div class="card-field" style="grid-column: 1 / -1;">
+            <div class="card-field-label">Posibilidad de ascenso</div>
+            <div class="card-field-value">💍 Esposa CEO · Nivel: En proceso con amor</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       SECCIÓN FOTO
+  ══════════════════════════════════════ -->
+  <section class="photo-section">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Identidad Oficial</span>
+        <h2 class="section-title">La protagonista de<br><em>esta historia</em></h2>
+      </div>
+
+      <div class="text-center" style="margin-top: 56px;">
+        <div class="photo-frame reveal">
+          <!-- Reemplaza src con img/foto1.png cuando tengas la imagen -->
+          <div class="photo-placeholder">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#1b7a51" stroke-width="1.2">
+              <rect x="3" y="3" width="18" height="18" rx="3"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <path d="M21 15l-5-5L5 21"/>
+            </svg>
+            <p>Agrega foto1.png a la carpeta /img</p>
+          </div>
+          <!-- Descomenta esto cuando tengas la foto:
+          <img src="img/foto1.png" alt="Mi amor" data-lightbox>
+          -->
+        </div>
+        <p class="photo-caption reveal">"La imagen que más me gusta ver cada día."</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       BENEFICIOS DEL CARGO
+  ══════════════════════════════════════ -->
+  <section class="benefits-section section">
+    <div class="container text-center">
+      <span class="section-label reveal">Paquete de beneficios</span>
+      <h2 class="section-title reveal" style="color: white;">Lo que incluye<br><em style="color: var(--gold);">este cargo</em></h2>
+      <p class="section-subtitle reveal">Beneficios premium, exclusivos e irrenunciables.</p>
+
+      <div class="benefits-grid">
+
+        <div class="benefit-card reveal">
+          <span class="benefit-icon">❤️</span>
+          <div class="benefit-title">Amor Ilimitado</div>
+          <div class="benefit-desc">Sin restricciones, sin vencimiento, sin condiciones.</div>
+        </div>
+
+        <div class="benefit-card reveal">
+          <span class="benefit-icon">☕</span>
+          <div class="benefit-title">Cafecitos Incluidos</div>
+          <div class="benefit-desc">Mañanas juntos con café o sin él, siempre especiales.</div>
+        </div>
+
+        <div class="benefit-card reveal">
+          <span class="benefit-icon">✈️</span>
+          <div class="benefit-title">Viajes Futuros</div>
+          <div class="benefit-desc">Destinos por descubrir, aventuras por vivir contigo.</div>
+        </div>
+
+        <div class="benefit-card reveal">
+          <span class="benefit-icon">🏡</span>
+          <div class="benefit-title">Sueños en Construcción</div>
+          <div class="benefit-desc">Construyendo un hogar y un futuro lado a lado.</div>
+        </div>
+
+        <div class="benefit-card reveal" style="grid-column: 1 / -1; max-width: 400px; margin: 0 auto;">
+          <span class="benefit-icon">💍</span>
+          <div class="benefit-title">Posibilidad de Ascenso</div>
+          <div class="benefit-desc">A Esposa CEO · El nivel más alto y más hermoso.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       TIMELINE ROMÁNTICA
+  ══════════════════════════════════════ -->
+  <section class="timeline-section">
+    <div class="container text-center">
+      <span class="section-label">Nuestra historia</span>
+      <h2 class="section-title">El camino que<br><em>nos trajo aquí</em></h2>
+      <p class="section-subtitle">Cada momento fue un paso hacia lo que somos hoy.</p>
+
+      <div class="timeline">
+
+        <div class="tl-item reveal">
+          <div class="tl-content">
+            <div class="tl-date">El comienzo</div>
+            <div class="tl-title">El día que nos conocimos</div>
+            <div class="tl-desc">El universo supo antes que nosotros lo que se venía.</div>
+          </div>
+          <div class="tl-dot">🌱</div>
+          <div class="tl-empty"></div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-empty"></div>
+          <div class="tl-dot">☕</div>
+          <div class="tl-content">
+            <div class="tl-date">Primera salida</div>
+            <div class="tl-title">La primera vez juntos</div>
+            <div class="tl-desc">Nerviosos, emocionados, y ya felices sin saberlo.</div>
+          </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-content">
+            <div class="tl-date">Un instante eterno</div>
+            <div class="tl-title">El primer abrazo</div>
+            <div class="tl-desc">El mundo dejó de girar por un momento.</div>
+          </div>
+          <div class="tl-dot">🤗</div>
+          <div class="tl-empty"></div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-empty"></div>
+          <div class="tl-dot">💬</div>
+          <div class="tl-content">
+            <div class="tl-date">Las palabras más bonitas</div>
+            <div class="tl-title">Primer "te amo"</div>
+            <div class="tl-desc">Dijeron juntos lo que el corazón ya sabía.</div>
+          </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-content">
+            <div class="tl-date">Hoy</div>
+            <div class="tl-title">Aprobada Oficialmente ✅</div>
+            <div class="tl-desc">Parte oficial e irremplazable de DOMKA SOLUTIONS y de mi vida.</div>
+          </div>
+          <div class="tl-dot">❤️</div>
+          <div class="tl-empty"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       MENSAJE FINAL
+  ══════════════════════════════════════ -->
+  <section class="message-section">
+    <div class="message-box reveal">
+      <div class="message-quote">&ldquo;</div>
+      <p class="message-text">
+        Más que un logro, más que un título… eres la mejor decisión que ha
+        llegado a mi vida. No fuiste un azar ni una coincidencia. Fuiste
+        exactamente lo que mi corazón estaba esperando sin saberlo.
+        Y hoy, con todo lo que tenemos por delante,
+        solo quiero decirte que sí — siempre, absolutamente, irrevocablemente sí.
+      </p>
+      <p class="message-sign">— Con todo mi amor, siempre.</p>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer>
+    <p class="footer-logo">DOMKA SOLUTIONS</p>
+    <p class="footer-tagline">© Forever Together &nbsp;·&nbsp; Certificado con amor</p>
+  </footer>
+
+
+  <!-- ── Scripts ── -->
+  <script src="js/script.js"></script>
+  <script>
+    // Fecha automática
+    document.addEventListener('DOMContentLoaded', () => {
+      setCurrentDate('.js-date');
+    });
+  </script>
+
+</body>
+</html>

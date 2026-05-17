@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Cumpleaños Mi Amor ❤️</title>
+  <meta name="description" content="Un regalo especial para el día más especial del año.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <style>
+    /* ────────────────────────────────
+       CUMPLEAÑOS — estilos locales
+    ──────────────────────────────── */
+
+    /* ─ Hero ─ */
+    .bday-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px;
+      overflow: hidden;
+      background: radial-gradient(ellipse 120% 100% at 50% 0%,
+        #0a3325 0%, #1b7a51 40%, #0e4f34 70%, #000 100%);
+    }
+    .bday-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 55% 40% at 20% 80%, rgba(201,169,110,0.14) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Estrellas fijas */
+    .stars {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .star {
+      position: absolute;
+      width: 2px; height: 2px;
+      border-radius: 50%;
+      background: #fff;
+      animation: twinkle var(--d, 3s) ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+    }
+    @keyframes twinkle {
+      0%,100% { opacity: 0.2; transform: scale(1); }
+      50%      { opacity: 0.9; transform: scale(1.6); }
+    }
+
+    .bday-label {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 1s ease both;
+    }
+    .bday-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 9vw, 7rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 1s 0.2s ease both;
+    }
+    .bday-title em {
+      display: block;
+      font-style: italic;
+      font-size: 0.45em;
+      color: var(--gold-light);
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+    .bday-sub {
+      font-family: var(--font-italic);
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: rgba(255,255,255,0.75);
+      max-width: 560px;
+      line-height: 1.75;
+      margin: 0 auto 56px;
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 1s 0.35s ease both;
+    }
+
+    /* Contador */
+    .counter-row {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 1s 0.5s ease both;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .counter-block {
+      text-align: center;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 16px;
+      padding: 24px 28px 20px;
+      min-width: 110px;
+    }
+    .counter-num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+    }
+    .counter-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-top: 8px;
+      display: block;
+    }
+
+    /* Scroll hint */
+    .bday-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.35);
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: fadeUp 1s 0.9s ease both;
+    }
+    .bday-scroll::after {
+      content: '';
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+
+    /* ─ Galería ─ */
+    .gallery-section {
+      padding: 100px 24px;
+      background: var(--cream);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 56px;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      cursor: zoom-in;
+      box-shadow: var(--shadow-card);
+    }
+    .gallery-item:nth-child(1) { grid-row: span 2; }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.06); }
+    .gallery-item::after {
+      content: '🔍';
+      position: absolute;
+      inset: 0;
+      background: rgba(27,122,81,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .gallery-item:hover::after { opacity: 1; }
+
+    /* Placeholder galería */
+    .gallery-placeholder {
+      background: linear-gradient(135deg, #e8f3ee, #d0e8dc);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 48px 24px;
+      color: var(--green);
+      text-align: center;
+      min-height: 180px;
+    }
+    .gallery-placeholder p { font-size: 0.78rem; color: #999; }
+
+    @media (max-width: 640px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item:nth-child(1) { grid-row: unset; grid-column: span 2; }
+    }
+
+    /* ─ Frases románticas ─ */
+    .frases-section {
+      padding: 100px 24px;
+      background: var(--black);
+    }
+    .frases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .frase-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-top: 3px solid var(--gold);
+      border-radius: 0 0 20px 20px;
+      padding: 36px 28px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .frase-card:hover {
+      background: rgba(201,169,110,0.06);
+      transform: translateY(-6px);
+    }
+    .frase-icon { font-size: 2rem; margin-bottom: 20px; }
+    .frase-text {
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.7;
+    }
+
+    /* ─ Versículos ─ */
+    .biblia-section {
+      padding: 100px 24px;
+      background: var(--cream);
+    }
+    .versiculo-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+      margin-top: 56px;
+    }
+    .versiculo-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 40px 32px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      border-bottom: 4px solid var(--green);
+    }
+    .versiculo-card::before {
+      content: '\201C';
+      font-family: Georgia, serif;
+      font-size: 8rem;
+      color: rgba(27,122,81,0.06);
+      position: absolute;
+      top: -20px; left: 10px;
+      line-height: 1;
+    }
+    .versiculo-ref {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .versiculo-text {
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #333;
+      line-height: 1.75;
+    }
+
+    /* ─ Carta / Sobre ─ */
+    .carta-section {
+      padding: 100px 24px;
+      background: linear-gradient(180deg, #0a3325 0%, #1b7a51 100%);
+      text-align: center;
+    }
+    .carta-section .section-title { color: var(--white); }
+    .carta-section .section-label { color: var(--gold); }
+
+    .envelope-wrap {
+      max-width: 640px;
+      margin: 56px auto 0;
+    }
+    .envelope-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 44px;
+      background: transparent;
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: var(--transition);
+      margin-bottom: 36px;
+    }
+    .envelope-btn:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    #letter-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease;
+      opacity: 0;
+    }
+    #letter-content.open {
+      max-height: 1000px;
+      opacity: 1;
+    }
+    .letter-paper {
+      background: var(--cream);
+      border-radius: 20px;
+      padding: 52px 44px;
+      text-align: left;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    .letter-paper::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--green), var(--gold));
+      border-radius: 20px 20px 0 0;
+    }
+    .letter-greeting {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--green);
+      margin-bottom: 24px;
+    }
+    .letter-body {
+      font-family: var(--font-italic);
+      font-size: 1.05rem;
+      color: #333;
+      line-height: 1.85;
+      margin-bottom: 32px;
+    }
+    .letter-firma {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--green);
+      text-align: right;
+    }
+
+    @media (max-width: 600px) {
+      .letter-paper { padding: 36px 24px; }
+    }
+
+    /* ─ Carrusel momentos ─ */
+    .carousel-section {
+      padding: 100px 24px;
+      background: var(--cream);
+      overflow: hidden;
+    }
+    .carousel-wrap {
+      max-width: 700px;
+      margin: 56px auto 0;
+      position: relative;
+    }
+    .carousel-viewport {
+      overflow: hidden;
+      border-radius: 24px;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .carousel-slide {
+      min-width: 100%;
+      background: var(--white);
+      padding: 56px 48px;
+      text-align: center;
+      box-shadow: var(--shadow-card);
+      border-radius: 24px;
+    }
+    .slide-emoji { font-size: 2.8rem; margin-bottom: 20px; }
+    .slide-date {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .slide-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+    .slide-msg {
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: #666;
+      line-height: 1.7;
+    }
+    .carousel-controls {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 28px;
+    }
+    .carousel-prev, .carousel-next {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--green);
+      background: transparent;
+      color: var(--green);
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .carousel-prev:hover, .carousel-next:hover {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    /* ─ Footer final ─ */
+    .bday-footer {
+      padding: 120px 24px;
+      background: var(--black);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .bday-footer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(27,122,81,0.12) 0%, transparent 70%);
+    }
+    .footer-main {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 5vw, 3.5rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+    .footer-main em { color: var(--gold); font-style: italic; }
+    .footer-sub {
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.6);
+      position: relative;
+      z-index: 2;
+      margin-bottom: 48px;
+    }
+    .footer-hearts {
+      font-size: 2rem;
+      animation: heartbeat 2s ease-in-out infinite;
+      position: relative;
+      z-index: 2;
+    }
+    @keyframes heartbeat {
+      0%,100% { transform: scale(1); }
+      50%      { transform: scale(1.25); }
+    }
+    .footer-copy {
+      position: relative;
+      z-index: 2;
+      margin-top: 40px;
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* Keyframes */
+    @keyframes fadeUp   { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+  </style>
+</head>
+<body>
+
+  <!-- ── Canvas partículas ── -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- ══════════════════════════════════════
+       HERO
+  ══════════════════════════════════════ -->
+  <section class="bday-hero" id="inicio">
+
+    <!-- Estrellas decorativas -->
+    <div class="stars" id="stars-bg"></div>
+
+    <p class="bday-label">✦ &nbsp; Un día tan especial como tú &nbsp; ✦</p>
+
+    <h1 class="bday-title">
+      Feliz Cumpleaños<br>
+      <em>Mi Amor ❤️</em>
+    </h1>
+
+    <p class="bday-sub">
+      Hoy el mundo celebra uno de sus mayores regalos:
+      el día en que naciste. Y yo soy el más afortunado
+      de poder celebrarlo contigo.
+    </p>
+
+    <!-- Contador desde fecha de nacimiento — edita la fecha abajo -->
+    <div class="counter-row">
+      <div class="counter-block">
+        <span class="counter-num" id="cnt-years">—</span>
+        <span class="counter-label">Años</span>
+      </div>
+      <div class="counter-block">
+        <span class="counter-num" id="cnt-days">—</span>
+        <span class="counter-label">Días más</span>
+      </div>
+      <div class="counter-block">
+        <span class="counter-num" id="cnt-hours">—</span>
+        <span class="counter-label">Horas hoy</span>
+      </div>
+    </div>
+
+    <div class="bday-scroll">Scroll para descubrir</div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       GALERÍA DE FOTOS
+  ══════════════════════════════════════ -->
+  <section class="gallery-section section">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Galería</span>
+        <h2 class="section-title">Momentos que<br><em>atesoro contigo</em></h2>
+        <p class="section-subtitle">Cada foto guarda una historia que quiero recordar para siempre.</p>
+      </div>
+
+      <div class="gallery-grid reveal">
+
+        <!-- Agrega tus fotos a /img/ y reemplaza los placeholders -->
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1b7a51" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <p>foto1.png<br>(imagen vertical grande)</p>
+          </div>
+          <!-- <img src="img/foto1.png" alt="Momento especial" data-lightbox> -->
+        </div>
+
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1b7a51" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <p>foto2.png</p>
+          </div>
+          <!-- <img src="img/foto2.png" alt="Momento especial" data-lightbox> -->
+        </div>
+
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1b7a51" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <p>foto3.png</p>
+          </div>
+          <!-- <img src="img/foto3.png" alt="Momento especial" data-lightbox> -->
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       FRASES ROMÁNTICAS
+  ══════════════════════════════════════ -->
+  <section class="frases-section section">
+    <div class="container text-center">
+      <span class="section-label reveal" style="color: var(--gold);">Para ti</span>
+      <h2 class="section-title reveal" style="color: white;">Lo que siento<br><em style="color: var(--gold);">cuando pienso en ti</em></h2>
+
+      <div class="frases-grid">
+
+        <div class="frase-card reveal">
+          <div class="frase-icon">🌹</div>
+          <p class="frase-text">"Eres la oración que mi corazón siempre pidió sin saber cómo nombrarte."</p>
+        </div>
+
+        <div class="frase-card reveal">
+          <div class="frase-icon">🌙</div>
+          <p class="frase-text">"Donde estés tú, ahí quiero estar. Es así de simple y así de profundo."</p>
+        </div>
+
+        <div class="frase-card reveal">
+          <div class="frase-icon">✨</div>
+          <p class="frase-text">"Gracias por existir. El mundo es más bonito desde que estás en él."</p>
+        </div>
+
+        <div class="frase-card reveal">
+          <div class="frase-icon">💫</div>
+          <p class="frase-text">"Cada vez que te veo, entiendo por qué el amor inspira tantas canciones."</p>
+        </div>
+
+        <div class="frase-card reveal">
+          <div class="frase-icon">🕯️</div>
+          <p class="frase-text">"No necesito más días perfectos. Solo necesito días contigo."</p>
+        </div>
+
+        <div class="frase-card reveal">
+          <div class="frase-icon">🌸</div>
+          <p class="frase-text">"Eres mi lugar favorito al que llegar, sin importar desde dónde venga."</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       VERSÍCULOS BÍBLICOS
+  ══════════════════════════════════════ -->
+  <section class="biblia-section section">
+    <div class="container text-center">
+      <span class="section-label">Palabras eternas</span>
+      <h2 class="section-title">Lo que dice la Palabra<br><em>sobre un amor como el nuestro</em></h2>
+
+      <div class="versiculo-cards">
+
+        <div class="versiculo-card reveal">
+          <div class="versiculo-ref">1 Corintios 13 : 4–7</div>
+          <p class="versiculo-text">
+            El amor es paciente y bondadoso. No tiene envidia ni vanidad,
+            no es orgulloso. No guarda rencor. Se regocija en la verdad.
+            Todo lo soporta, todo lo cree, todo lo espera y todo lo aguanta.
+          </p>
+        </div>
+
+        <div class="versiculo-card reveal">
+          <div class="versiculo-ref">Proverbios 3 : 15</div>
+          <p class="versiculo-text">
+            Ella es más valiosa que las piedras preciosas.
+            Nada de lo que deseas puede compararse con ella.
+          </p>
+        </div>
+
+        <div class="versiculo-card reveal">
+          <div class="versiculo-ref">Cantares 6 : 3</div>
+          <p class="versiculo-text">
+            Yo soy de mi amado y mi amado es mío.
+            Él apacienta su rebaño entre lirios.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       CARTA DE AMOR
+  ══════════════════════════════════════ -->
+  <section class="carta-section">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Carta especial</span>
+        <h2 class="section-title">Una carta<br><em style="color: var(--gold-light);">solo para ti</em></h2>
+      </div>
+
+      <div class="envelope-wrap reveal">
+        <button class="envelope-btn" id="open-envelope">✉️ &nbsp; Abrir carta</button>
+
+        <div id="letter-content">
+          <div class="letter-paper">
+            <p class="letter-greeting">Mi amor,</p>
+            <p class="letter-body">
+              Hoy es tu día. Y aunque todos los días busco una razón para decirte
+              que eres lo mejor que me ha pasado, hoy tengo el pretexto más bonito
+              del mundo para hacerlo.<br><br>
+
+              Cuando pienso en el camino que hemos recorrido juntos, no puedo sino
+              agradecer al cielo por haberte puesto en mi vida. No eres perfecta
+              —nadie lo es— pero para mí eres exactamente lo que necesitaba, lo que
+              deseaba y lo que nunca me atreví a pedir.<br><br>
+
+              En este cumpleaños quiero prometerte que seguiré eligiéndote cada día.
+              Quiero que cada año que pase nos encuentre más unidos, más contentos,
+              con más sueños cumplidos y más aventuras por delante.<br><br>
+
+              Feliz cumpleaños, mi amor. Que este año sea tan especial como tú.<br><br>
+
+              Te amo más de lo que sé expresar con palabras.
+            </p>
+            <p class="letter-firma">Con todo mi corazón ❤️</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       CARRUSEL — NUESTROS MOMENTOS
+  ══════════════════════════════════════ -->
+  <section class="carousel-section">
+    <div class="container text-center">
+      <span class="section-label">Nuestros momentos</span>
+      <h2 class="section-title">Recuerdos que<br><em>siempre llevaré conmigo</em></h2>
+
+      <div class="carousel-wrap reveal">
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+
+            <div class="carousel-slide">
+              <div class="slide-emoji">🌱</div>
+              <div class="slide-date">El principio</div>
+              <div class="slide-title">Cuando todo empezó</div>
+              <p class="slide-msg">No lo sabía entonces, pero ese día cambió todo. Y lo volvería a repetir sin dudarlo.</p>
+            </div>
+
+            <div class="carousel-slide">
+              <div class="slide-emoji">🗺️</div>
+              <div class="slide-date">Una aventura juntos</div>
+              <div class="slide-title">Nuestra primera salida</div>
+              <p class="slide-msg">Cada lugar es mejor cuando lo recorro contigo. Quiero seguir descubriendo el mundo a tu lado.</p>
+            </div>
+
+            <div class="carousel-slide">
+              <div class="slide-emoji">🌅</div>
+              <div class="slide-date">Un momento tranquilo</div>
+              <div class="slide-title">Esos silencios que también dicen todo</div>
+              <p class="slide-msg">A veces no hace falta decir nada. Solo estar juntos ya es suficiente.</p>
+            </div>
+
+            <div class="carousel-slide">
+              <div class="slide-emoji">💌</div>
+              <div class="slide-date">Siempre</div>
+              <div class="slide-title">Cada día a tu lado</div>
+              <p class="slide-msg">No necesito grandes momentos. Los pequeños instantes contigo son los que más atesoro.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="carousel-controls">
+          <button class="carousel-prev" aria-label="Anterior">←</button>
+          <button class="carousel-next" aria-label="Siguiente">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       FOOTER EMOCIONAL
+  ══════════════════════════════════════ -->
+  <footer class="bday-footer">
+    <div class="container reveal">
+      <h2 class="footer-main">
+        Gracias por llegar<br>a <em>mi vida</em>
+      </h2>
+      <p class="footer-sub">Feliz cumpleaños, mi amor.</p>
+      <div class="footer-hearts">❤️</div>
+      <p class="footer-copy">DOMKA SOLUTIONS &nbsp;·&nbsp; Hecho con amor</p>
+    </div>
+  </footer>
+
+
+  <!-- ── Scripts ── -->
+  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      /* ── Estrellas generadas dinámicamente ── */
+      const starsContainer = document.getElementById('stars-bg');
+      for (let i = 0; i < 80; i++) {
+        const s = document.createElement('div');
+        s.className = 'star';
+        s.style.cssText = `
+          left: ${Math.random()*100}%;
+          top:  ${Math.random()*100}%;
+          --d: ${(Math.random()*4+2).toFixed(1)}s;
+          --delay: ${(Math.random()*4).toFixed(1)}s;
+          width: ${(Math.random()*2+1).toFixed(1)}px;
+          height: ${(Math.random()*2+1).toFixed(1)}px;
+          opacity: ${(Math.random()*0.5+0.1).toFixed(2)};
+        `;
+        starsContainer.appendChild(s);
+      }
+
+      /* ── Contador ── */
+      // EDITA ESTA FECHA: 'YYYY-MM-DD' con la fecha de nacimiento
+      const FECHA_NACIMIENTO = '1998-06-15';
+
+      function updateCounter() {
+        const now   = new Date();
+        const birth = new Date(FECHA_NACIMIENTO);
+        const diffMs   = now - birth;
+        const totalDays = Math.floor(diffMs / 86400000);
+        const years     = Math.floor(totalDays / 365.25);
+        const remDays   = totalDays - Math.floor(years * 365.25);
+        const hours     = now.getHours();
+
+        document.getElementById('cnt-years').textContent = years;
+        document.getElementById('cnt-days').textContent  = remDays;
+        document.getElementById('cnt-hours').textContent = hours;
+      }
+      updateCounter();
+      setInterval(updateCounter, 60000);
+
+      /* ── Lightbox y carrusel ── */
+      initLightbox();
+      initCarousel('.carousel-track', '.carousel-prev', '.carousel-next');
+      initEnvelope();
+    });
+  </script>
+
+</body>
+</html>
