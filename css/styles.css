@@ -1,0 +1,179 @@
+/* ============================================================
+   DOMKA SOLUTIONS — Estilos Globales
+   Paleta: #f4efe7 | #1b7a51 | #ffffff | #000000
+   ============================================================ */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+
+/* ── Variables ── */
+:root {
+  --cream:   #f4efe7;
+  --green:   #1b7a51;
+  --green-light: #28a86e;
+  --green-dark:  #124f35;
+  --white:   #ffffff;
+  --black:   #000000;
+  --gold:    #c9a96e;
+  --gold-light: #e8d5b0;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Montserrat', sans-serif;
+  --font-italic:  'Cormorant Garamond', Georgia, serif;
+
+  --transition: 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --shadow-soft: 0 8px 40px rgba(27,122,81,0.12);
+  --shadow-card: 0 20px 60px rgba(0,0,0,0.10);
+  --radius-card: 24px;
+  --radius-pill: 100px;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--black);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a  { text-decoration: none; color: inherit; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--green); border-radius: 4px; }
+
+/* ── Utility ── */
+.section { padding: 100px 24px; }
+.container { max-width: 1100px; margin: 0 auto; }
+.text-center { text-align: center; }
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Particle canvas ── */
+#particle-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Noise overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* ── Botón principal ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 42px;
+  background: var(--green);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--green-light);
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+}
+.btn-primary:hover::before { transform: translateX(0); }
+.btn-primary span, .btn-primary svg { position: relative; z-index: 1; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(27,122,81,0.4); }
+
+/* ── Glass card ── */
+.glass-card {
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.8);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+/* ── Section label ── */
+.section-label {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 16px;
+  display: inline-block;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--black);
+  margin-bottom: 20px;
+}
+.section-title em {
+  font-style: italic;
+  color: var(--green);
+}
+.section-subtitle {
+  font-family: var(--font-italic);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: #555;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ── Divider ornament ── */
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 28px auto;
+  width: fit-content;
+  color: var(--gold);
+}
+.ornament::before, .ornament::after {
+  content: '';
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+.ornament::after { background: linear-gradient(90deg, var(--gold), transparent); }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .section { padding: 72px 20px; }
+}
