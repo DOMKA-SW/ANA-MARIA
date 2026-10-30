@@ -346,7 +346,10 @@ button.ready:hover{background:var(--text);color:var(--bg)}
 /* ===== Carta ===== */
 (function(){
   var $=function(id){return document.getElementById(id);};
-  var BASE='img/';
+  /* >>> CARPETA de las fotos, relativa a este HTML (ej. 'img/' o 'fotos/' o 'assets/img/'). Si están junto al HTML déjala vacía '' <<< */
+  var CARPETA='../../img/';
+  var RAW='https://raw.githubusercontent.com/DOMKA-SW/ANA-MARIA/main/';
+  var BASES=[CARPETA,'img/','',RAW+'img/',RAW].filter(function(b,i,a){return a.indexOf(b)===i;});
   var FOTOS=[
     'WhatsApp Image 2026-10-29 at 8.09.29 PM (3).jpeg',
     'WhatsApp Image 2026-10-29 at 8.09.29 PM (2).jpeg',
@@ -368,8 +371,9 @@ button.ready:hover{background:var(--text);color:var(--bg)}
     var h=$('heart');
     if(!h.children.length){
       FOTOS.forEach(function(f){
-        var i=document.createElement('img');
-        i.alt='';i.src=BASE+encodeURIComponent(f);
+        var i=document.createElement('img'),n=0,e=encodeURIComponent(f);
+        i.alt='';i.src=BASES[0]+e;
+        i.onerror=function(){n++;if(n<BASES.length)i.src=BASES[n]+e;};
         h.appendChild(i);
       });
     }
