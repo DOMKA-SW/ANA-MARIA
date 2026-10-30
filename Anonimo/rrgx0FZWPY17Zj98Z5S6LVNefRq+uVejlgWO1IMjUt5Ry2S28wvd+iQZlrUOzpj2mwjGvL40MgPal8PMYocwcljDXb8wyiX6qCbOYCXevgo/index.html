@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Temporizador</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Cinzel:wght@500&display=swap" rel="stylesheet">
 <style>
 :root{color-scheme:dark;--bg:#000;--text:#f2f2f2;--muted:#8a8a90;--line:#26262b;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -43,9 +46,46 @@ button.ready:hover{background:var(--text);color:var(--bg)}
 #stage .grid{display:grid;gap:8px;justify-content:center;margin:0 auto;grid-template-columns:repeat(4,64px)}
 #stage .cell{width:100%;aspect-ratio:1;font-size:1.6rem;padding:0;letter-spacing:0;opacity:1;cursor:pointer;color:var(--text);border:1px solid var(--line);background:transparent}
 #stage .cell.up{border-color:var(--text)}
+#carta{--ink:#3b2410;padding:8px 0 40px}
+#carta h1{font-family:Cinzel,Georgia,serif;font-weight:500;font-size:clamp(1.1rem,4vw,1.5rem);letter-spacing:.4em;text-transform:uppercase;color:#d9c08a;margin:8px 0 28px}
+#carta .wrap{text-align:center;margin:34px 0 10px}
+#cartaBtn{margin-top:40px}
+/* Pergamino */
+.paper{position:relative;max-width:680px;margin:0 auto;padding:clamp(36px,8vw,70px) clamp(26px,7vw,64px);color:var(--ink);isolation:isolate;filter:drop-shadow(0 0 18px rgba(255,120,30,.25)) drop-shadow(0 12px 30px rgba(0,0,0,.8))}
+.paper::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:6px;
+  background:
+    radial-gradient(ellipse at 20% 15%,rgba(255,244,205,.65),transparent 55%),
+    radial-gradient(ellipse at 80% 85%,rgba(160,110,45,.35),transparent 55%),
+    linear-gradient(135deg,#ecd9a6,#d9b878 55%,#c9a15f);
+  box-shadow:inset 0 0 70px 22px rgba(70,30,6,.85),inset 0 0 14px 5px #1a0a02,inset 0 0 130px 30px rgba(120,60,10,.35);
+  filter:url(#burn)}
+.paper p{font-family:Caveat,'Segoe Script','Brush Script MT',cursive;font-size:clamp(1.25rem,4.4vw,1.6rem);line-height:1.45;margin:0 0 1em;text-align:left}
+.paper p.quote{text-align:center;font-weight:600}
+.paper p.ask{text-align:center;font-weight:600;font-size:clamp(1.5rem,5.4vw,2rem);margin:1.2em 0 .4em}
+.paper .sign{text-align:right;margin-top:1.2em}
+
+/* Respuesta + corazón */
+#yes{display:none;text-align:center;margin-top:30px}
+#yes.show{display:block;animation:fade 2s ease both}
+#yes h2{font-family:Caveat,cursive;font-weight:600;font-size:clamp(2.2rem,9vw,3.6rem);margin:0 0 26px;color:#f3c6cf}
+.heart{position:relative;width:min(92vw,420px);aspect-ratio:1;margin:0 auto}
+.heart img{position:absolute;object-fit:cover;aspect-ratio:1;border-radius:14px;border:3px solid #ecd9a6;box-shadow:0 8px 22px rgba(0,0,0,.7);opacity:0;animation:pop .9s ease forwards}
+.heart img:nth-child(1){width:40%;left:5%;top:0;animation-delay:.4s}
+.heart img:nth-child(2){width:40%;left:55%;top:0;animation-delay:.9s}
+.heart img:nth-child(3){width:36%;left:14%;top:40%;animation-delay:1.4s}
+.heart img:nth-child(4){width:36%;left:50%;top:40%;animation-delay:1.9s}
+.heart img:nth-child(5){width:24%;left:38%;top:76%;animation-delay:2.4s}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:scale(1)}}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="burn" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="4" seed="7" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="34" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
 <main>
   <section id="wait">
     <div class="clock">
@@ -69,7 +109,30 @@ button.ready:hover{background:var(--text);color:var(--bg)}
     <p class="to">Ana María</p>
     <p class="msg" id="msg"></p>
     <img id="pic" alt="" class="hide">
+    <button id="cartaBtn" class="ready">Tu carta</button>
   </section>
+<section id="carta" class="hide">
+  <h1>Tu carta</h1>
+  <article class="paper">
+  <p>Hola, Ana María:</p>
+  <p>Para este momento ya estás en el lugar que preparé para ti. Antes de continuar, reconozco que no fuimos a la capacitación de HOMECENTER, pero quería que realmente fuese una sorpresa para ti.</p>
+  <p>Hoy, 29 de octubre del 2026, leyendo este mensaje, quiero ser muy directo, y empiezo con una frase que representa el momento:</p>
+  <p class="quote">“¿Cómo rendirse si es nuestro sueño?”</p>
+  <p>Ana María Vallejo, ¿estás dispuesta a aceptar unir tu vida junto a mí, pero no como estábamos antes, sino con un propósito de los dos?</p>
+  <p>Antes de que me respondas, quiero hablar por última vez del pasado, pedirte perdón y darte las gracias por estar aquí. Hoy, después de lo que hemos pasado, le he pedido a Dios por ti, por mí y por los dos. Estoy seguro de que quiero mi vida a tu lado, y le doy muchas gracias a Dios por el privilegio de tenerte en mi vida y poder compartir con ella.</p>
+  <p>“Mujer virtuosa, ¿quién la hallará?” Dios me permitió conocerla y hallarla, y hoy poder mirarte a esos ojos de amor que tienes.</p>
+  <p>Ana María, con este mensaje quiero decirte el amor real que tengo por ti. Quiero cuidarte, quiero conocerte, quiero escucharte, quiero amarte, quiero darte el valor y el lugar que tienes como hija de Dios, que Él me permite tener en mi vida. Hoy renuncio a lo que soy para dar paso a lo que vamos a ser los dos. Quiero poder casarme y formar nuestro hogar juntos, hacer las cosas como Dios las quiere en nosotros, juntos. Hoy es una propuesta de noviazgo, pero creo, estoy seguro y sé que pronto será algo más: dar un paso nuevo y ser tu esposo.</p>
+  <p>Y para finalizar, quiero darte gracias por 3 años a tu lado, donde aprendí, crecí como persona y maduré. Hoy puedo estar seguro del amor que siento por ti, de lo enamorado que estoy de ti y de lo feliz que soy contigo.</p>
+  <p>No es una propuesta de volver a lo de antes; todo lo contrario, es una propuesta de algo nuevo para los dos. Porque ya no somos los de antes: somos los de ahora en adelante. Podemos comenzar, podemos soñar otra vez, podemos enamorarnos otra vez, podemos confiar otra vez, podemos hablar otra vez.</p>
+  <p class="ask">ANA MARÍA, ¿puedo ser tu novio?<br>Y tú, ¿quieres ser mi novia?</p>
+</article>
+  <div class="wrap" id="ask"><button class="ready" id="yesBtn">Sí 💖</button></div>
+  <section id="yes">
+    <h2>Dijiste que siiii 💖</h2>
+    <div class="heart" id="heart"></div>
+  </section>
+  <div class="wrap"><button class="ready" id="backBtn">Volver</button></div>
+</section>
 </main>
 <button id="exit" class="hide">Salir</button>
 <div id="secret"></div>
@@ -277,6 +340,44 @@ button.ready:hover{background:var(--text);color:var(--bg)}
     info.addEventListener('click',flap);
     reset();timer=setInterval(step,1000/60);
   }
+})();
+</script>
+<script>
+/* ===== Carta ===== */
+(function(){
+  var $=function(id){return document.getElementById(id);};
+  var BASE='img/';
+  var FOTOS=[
+    'WhatsApp Image 2026-10-29 at 8.09.29 PM (3).jpeg',
+    'WhatsApp Image 2026-10-29 at 8.09.29 PM (2).jpeg',
+    'WhatsApp Image 2026-10-29 at 8.09.29 PM (1).jpeg',
+    'WhatsApp Image 2026-10-29 at 8.09.29 PM.jpeg',
+    'WhatsApp Image 2026-10-29 at 8.09.28 PM.jpeg'
+  ];
+  $('cartaBtn').addEventListener('click',function(){
+    $('reveal').classList.remove('show');
+    $('carta').classList.remove('hide');
+    scrollTo(0,0);
+  });
+  $('backBtn').addEventListener('click',function(){
+    $('carta').classList.add('hide');
+    $('reveal').classList.add('show');
+    scrollTo(0,0);
+  });
+  $('yesBtn').addEventListener('click',function(){
+    var h=$('heart');
+    if(!h.children.length){
+      FOTOS.forEach(function(f){
+        var i=document.createElement('img');
+        i.alt='';i.src=BASE+encodeURIComponent(f);
+        h.appendChild(i);
+      });
+    }
+    $('ask').style.display='none';
+    $('yes').classList.add('show');
+    setTimeout(function(){$('yes').scrollIntoView({behavior:'smooth',block:'start'});},100);
+  });
+  $('exit').addEventListener('click',function(){ $('carta').classList.add('hide'); });
 })();
 </script>
 </body>
